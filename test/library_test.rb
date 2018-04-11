@@ -20,4 +20,21 @@ class LibraryTest < Minitest::Test
   def test_it_has_an_empty_shelf_for_books
     assert_equal [], @dpl.books
   end
+
+  def test_it_can_add_books_to_a_collection
+    @dpl.add_to_collection(@mockingbird)
+    @dpl.add_to_collection(@villette)
+
+    assert_instance_of Book, @dpl.books[0]
+    assert_equal "To Kill a Mockingbird", @dpl.books[0].title
+    assert_equal "Harper", @dpl.books[0].author_first_name
+    assert_equal "Lee", @dpl.books[0].author_last_name
+    assert_equal "1960", @dpl.books[0].publication_date
+
+    assert_instance_of Book, @dpl.books[1]
+    assert_equal "Villette", @dpl.books[1].title
+    assert_equal "Charlotte", @dpl.books[1].author_first_name
+    assert_equal "Bronte", @dpl.books[1].author_last_name
+    assert_equal "1853", @dpl.books[1].publication_date
+  end
 end
