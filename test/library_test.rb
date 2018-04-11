@@ -65,7 +65,7 @@ class LibraryTest < Minitest::Test
 
     assert_instance_of Hash, @dpl.find_by_author("Charlotte Bronte")
     assert_equal 2, @dpl.find_by_author("Charlotte Bronte").length
-    assert_equal ["Jane Eyre", "Villette"], @dpl.find_by_author("Charlotte Bronte").keys
+    assert_equal ["Villette", "Jane Eyre"], @dpl.find_by_author("Charlotte Bronte").keys
   end
 
   def test_it_can_find_book_by_publication_year
@@ -73,5 +73,7 @@ class LibraryTest < Minitest::Test
     @dpl.add_to_collection(@villette)
     @dpl.add_to_collection(@jane_eyre)
 
+    assert_instance_of Hash, @dpl.find_by_publication_date("1960")
+    assert_equal "1960", @dpl.find_by_publication_date("1960")["To Kill a Mockingbird"].title
   end
 end

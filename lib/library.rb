@@ -29,10 +29,15 @@ class Library
     found = {}
     @books.each do |book|
       if author == book.author_full_name
-          found[book.title] = book
+        found[book.title] = book
       end
-      found
-      binding.pry
+    end
+    found
+  end
+
+  def find_by_publication_date(date)
+    @books.find do |book|
+      date == book.publication_date
     end
   end
 end
