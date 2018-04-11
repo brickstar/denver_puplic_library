@@ -36,10 +36,11 @@ class Library
   end
 
   def find_by_publication_date(date)
-    published = {}
+    publicated = {}
     found = @books.find do |book|
       date == book.publication_date
     end
-    binding.pry
+    publicated[found.title] = found
+    publicated
   end
 end

@@ -72,8 +72,8 @@ class LibraryTest < Minitest::Test
     @dpl.add_to_collection(@mockingbird)
     @dpl.add_to_collection(@villette)
     @dpl.add_to_collection(@jane_eyre)
-
+  
     assert_instance_of Hash, @dpl.find_by_publication_date("1960")
-    assert_equal "1960", @dpl.find_by_publication_date("1960")["To Kill a Mockingbird"].title
+    assert_equal "1960", @dpl.find_by_publication_date("1960")["To Kill a Mockingbird"].publication_date
   end
 end
