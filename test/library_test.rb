@@ -56,4 +56,12 @@ class LibraryTest < Minitest::Test
     assert_equal "Bronte", @dpl.card_catologue[1].author_last_name
     assert_equal "Lee", @dpl.card_catologue[2].author_last_name
   end
+
+  def test_it_can_find_book_by_author_first_and_last_name
+
+  end
+
+  def test_it_can_find_book_by_publication_year
+
+  end
 end

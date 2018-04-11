@@ -14,4 +14,10 @@ class Library
     end
     titles.include?(book_title)
   end
+
+  def card_catologue
+    @books.sort_by do |book|
+      book.author_last_name
+    end
+  end
 end
