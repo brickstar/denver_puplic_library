@@ -21,10 +21,7 @@ class Library
       book.author_last_name
     end
   end
-# use author full name helper method to
-#   create a hash with author full name key
-#   pointing to all book objects written
-#   by that author
+
   def find_by_author(author)
     found = {}
     @books.each do |book|
