@@ -1,3 +1,4 @@
+require 'pry'
 class Library
   attr_reader :books
   def initialize
@@ -25,6 +26,13 @@ class Library
 #   pointing to all book objects written
 #   by that author
   def find_by_author(author)
-  
+    found = {}
+    @books.each do |book|
+      if author == book.author_full_name
+          found[book.title] = book
+      end
+      found
+      binding.pry
+    end
   end
 end
