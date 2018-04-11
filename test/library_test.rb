@@ -37,4 +37,12 @@ class LibraryTest < Minitest::Test
     assert_equal "Bronte", @dpl.books[1].author_last_name
     assert_equal "1853", @dpl.books[1].publication_date
   end
+
+  def test_it_can_search_for_a_book_within_collection_by_title
+    @dpl.add_to_collection(@mockingbird)
+    @dpl.add_to_collection(@villette)
+
+
+    assert_equal true, @dpl.include?("To Kill a Mockingbird")
+  end
 end
