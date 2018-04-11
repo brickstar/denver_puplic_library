@@ -45,4 +45,15 @@ class LibraryTest < Minitest::Test
     assert_equal true, @dpl.include?("To Kill a Mockingbird")
     assert_equal false, @dpl.include?("A Connecticut Yankee in King Arthur's Court")
   end
+
+  def test_it_has_a_card_catalogue_array_sorted_by_author_last_name
+    @dpl.add_to_collection(@mockingbird)
+    @dpl.add_to_collection(@villette)
+    @dpl.add_to_collection(@jane_eyre)
+
+
+    assert_equal "Bronte", @dpl.card_catologue[0].author_last_name
+    assert_equal "Bronte", @dpl.card_catologue[1].author_last_name
+    assert_equal "Lee", @dpl.card_catologue[2].author_last_name
+  end
 end
