@@ -42,7 +42,7 @@ class LibraryTest < Minitest::Test
     @dpl.add_to_collection(@mockingbird)
     @dpl.add_to_collection(@villette)
 
-
     assert_equal true, @dpl.include?("To Kill a Mockingbird")
+    assert_equal false, @dpl.include?("A Connecticut Yankee in King Arthur's Court")
   end
 end
