@@ -33,11 +33,9 @@ class Library
   end
 
   def find_by_publication_date(date)
-    publicated = {}
     found = @books.find do |book|
       date == book.publication_date
     end
-    publicated[found.title] = found
-    publicated
+    { found.title => found }
   end
 end
