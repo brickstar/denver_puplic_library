@@ -14,6 +14,10 @@ class LibraryTest < Minitest::Test
   end
 
   def test_it_exists
-    assert_equal Library, @dpl
+    assert_instance_of Library, @dpl
+  end
+
+  def test_it_has_an_empty_shelf_for_books
+    assert_equal [], @dpl.books
   end
 end
