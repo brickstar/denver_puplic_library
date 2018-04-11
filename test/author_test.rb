@@ -23,7 +23,11 @@ class AuthorTest < Minitest::Test
   end
 
   def test_add_books_returns_instance_of_book
-    
+    assert_instance_of Book, @charlotte.add_book("Jane Eyre", "October 16, 1847")
+    assert_equal "Jane Eyre", @charlotte.books[0].title
+    assert_equal "Charlotte", @charlotte.books[0].author_first_name
+    assert_equal "Bronte", @charlotte.books[0].author_last_name
+    assert_equal "1847", @charlotte.books[0].publication_date
   end
 
   def test_it_can_add_books
