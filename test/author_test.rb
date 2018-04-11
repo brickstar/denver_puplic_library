@@ -10,4 +10,8 @@ class AuthorTest < Minitest::Test
   def test_it_exists
     assert_instance_of Author, @charlotte
   end
+
+  def test_it_has_books_but_starts_empty
+    assert_equal [], @charlotte.books
+  end
 end
