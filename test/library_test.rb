@@ -51,17 +51,26 @@ class LibraryTest < Minitest::Test
     @dpl.add_to_collection(@villette)
     @dpl.add_to_collection(@jane_eyre)
 
-
-    assert_equal "Bronte", @dpl.card_catologue[0].author_last_name
-    assert_equal "Bronte", @dpl.card_catologue[1].author_last_name
-    assert_equal "Lee", @dpl.card_catologue[2].author_last_name
+    assert_instance_of Array, @dpl.card_catalogue
+    assert_equal "Bronte", @dpl.card_catalogue[0].author_last_name
+    assert_equal "Bronte", @dpl.card_catalogue[1].author_last_name
+    assert_equal "Lee", @dpl.card_catalogue[2].author_last_name
   end
 
-  def test_it_can_find_book_by_author_first_and_last_name
+  def test_it_can_find_all_books_by_author_first_and_last_name
+    @dpl.add_to_collection(@mockingbird)
+    @dpl.add_to_collection(@villette)
+    @dpl.add_to_collection(@jane_eyre)
 
+    assert_instance_of Hash, @dpl.find_by_author
+    assert_equal 2, @dpl.find_by_author.length
+    assert_equal ["Jane Eyre", "Villette"], @dpl.find_by_author.keys
   end
 
   def test_it_can_find_book_by_publication_year
+    @dpl.add_to_collection(@mockingbird)
+    @dpl.add_to_collection(@villette)
+    @dpl.add_to_collection(@jane_eyre)
 
   end
 end

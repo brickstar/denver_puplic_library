@@ -15,9 +15,16 @@ class Library
     titles.include?(book_title)
   end
 
-  def card_catologue
+  def card_catalogue
     @books.sort_by do |book|
       book.author_last_name
     end
+  end
+# use author full name helper method to
+#   create a hash with author full name key
+#   pointing to all book objects written
+#   by that author
+  def find_by_author(author)
+  
   end
 end
