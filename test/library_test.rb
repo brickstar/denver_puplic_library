@@ -52,10 +52,12 @@ class LibraryTest < Minitest::Test
     @dpl.add_to_collection(@villette)
     @dpl.add_to_collection(@jane_eyre)
 
+    actual = @dpl.card_catalogue
+
     assert_instance_of Array, @dpl.card_catalogue
-    assert_equal "Bronte", @dpl.card_catalogue[0].author_last_name
-    assert_equal "Bronte", @dpl.card_catalogue[1].author_last_name
-    assert_equal "Lee", @dpl.card_catalogue[2].author_last_name
+    assert_equal "Bronte", actual[0].author_last_name
+    assert_equal "Bronte", actual[1].author_last_name
+    assert_equal "Lee", actual[2].author_last_name
   end
 
   def test_it_can_find_all_books_by_author_first_and_last_name
@@ -63,17 +65,23 @@ class LibraryTest < Minitest::Test
     @dpl.add_to_collection(@villette)
     @dpl.add_to_collection(@jane_eyre)
 
-    assert_instance_of Hash, @dpl.find_by_author("Charlotte Bronte")
-    assert_equal 2, @dpl.find_by_author("Charlotte Bronte").length
-    assert_equal ["Villette", "Jane Eyre"], @dpl.find_by_author("Charlotte Bronte").keys
+    actual = @dpl.find_by_author("Charlotte Bronte")
+
+    assert_instance_of Hash, actual
+    assert_equal 2, actual.length
+    assert_equal ["Villette", "Jane Eyre"], actual.keys
   end
 
   def test_it_can_find_book_by_publication_year
     @dpl.add_to_collection(@mockingbird)
     @dpl.add_to_collection(@villette)
     @dpl.add_to_collection(@jane_eyre)
-  
-    assert_instance_of Hash, @dpl.find_by_publication_date("1960")
-    assert_equal "1960", @dpl.find_by_publication_date("1960")["To Kill a Mockingbird"].publication_date
+
+    actual = @dpl.find_by_publication_date("1960")
+
+    assert_instance_of Hash, actual
+    assert_equal "1960", actual["To Kill a Mockingbird"].publication_date
+    assert_equal "Harper", actual["To Kill a Mockingbird"].author_first_name
+    assert_equal "Lee", actual["To Kill a Mockingbird"].author_last_name
   end
 end
